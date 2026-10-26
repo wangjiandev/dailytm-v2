@@ -1,8 +1,18 @@
-import Image from "next/image";
-import db from "@/lib/db";
+import { HydrateClient, prefetch, trpc } from "@/trpc/server";
+import { ClientGreeting } from "@/components/client-greeting";
+import { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 
-export default async function Home() {
-  "use cache";
-  const user = await db.user.findMany();
-  return <div>{JSON.stringify(user, null, 2)}</div>;
+export default function Home() {
+  prefetch(trpc.hello.queryOptions({ text: "world" }));
+  return (
+    <HydrateClient>
+      <div>Home</div>
+      <ErrorBoundary fallback={<div>Something went wrong</div>}>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ClientGreeting />
+        </Suspense>
+      </ErrorBoundary>
+    </HydrateClient>
+  );
 }
