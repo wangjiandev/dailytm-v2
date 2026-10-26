@@ -9,7 +9,57 @@
 * 🟢 You can import this file directly.
 */
 
+export const Plan = {
+  FREE: 'FREE',
+  PRO: 'PRO',
+  ENTERPRISE: 'ENTERPRISE',
+  SELF_HOSTED: 'SELF_HOSTED'
+} as const
+
+export type Plan = (typeof Plan)[keyof typeof Plan]
 
 
-// This file is empty because there are no enums in the schema.
-export {}
+export const ProjectVisibility = {
+  OPEN: 'OPEN',
+  RESTRICTED: 'RESTRICTED'
+} as const
+
+export type ProjectVisibility = (typeof ProjectVisibility)[keyof typeof ProjectVisibility]
+
+
+export const StatusCategory = {
+  TODO: 'TODO',
+  ACTIVE: 'ACTIVE',
+  DONE: 'DONE'
+} as const
+
+export type StatusCategory = (typeof StatusCategory)[keyof typeof StatusCategory]
+
+
+export const TaskPriority = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH',
+  CRITICAL: 'CRITICAL'
+} as const
+
+export type TaskPriority = (typeof TaskPriority)[keyof typeof TaskPriority]
+
+
+export const NotificationType = {
+  TASK_ASSIGNED: 'TASK_ASSIGNED',
+  MENTION: 'MENTION',
+  COMMENT: 'COMMENT',
+  DUE_SOON: 'DUE_SOON'
+} as const
+
+export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
+
+
+export const AttachmentStatus = {
+  PENDING: 'PENDING',
+  READY: 'READY',
+  DELETED: 'DELETED'
+} as const
+
+export type AttachmentStatus = (typeof AttachmentStatus)[keyof typeof AttachmentStatus]
