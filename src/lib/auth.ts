@@ -21,6 +21,20 @@ export const auth = betterAuth({
   trustedOrigins: [process.env.BETTER_AUTH_URL as string],
   emailAndPassword: {
     enabled: true,
+    requireEmailVerification: true,
+    sendResetPassword: async ({ user, url, token }) => {
+      console.log(
+        `Sending reset password email to ${user.email} with url ${url}`,
+      );
+    },
+  },
+  emailVerification: {
+    sendOnSignUp: true,
+    sendVerificationEmail: async ({ user, url }) => {
+      console.log(
+        `Sending verification email to ${user.email} with url: ${url}`,
+      );
+    },
   },
   socialProviders: {
     github: {
