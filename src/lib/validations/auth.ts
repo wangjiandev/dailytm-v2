@@ -1,4 +1,5 @@
 import z from "zod";
+import { Session } from "@/lib/auth";
 
 const password = z
   .string()
@@ -33,3 +34,26 @@ export const signUpSchema = z
 
 export type SignInFormData = z.infer<typeof signInSchema>;
 export type SignUpFormData = z.infer<typeof signUpSchema>;
+
+export type ProtectedContext = {
+  session: Session;
+  userId: string;
+};
+
+export type OrgContext = ProtectedContext & {
+  id: string;
+  role: string;
+  userId: string;
+  organizationId: string;
+  createdAt: Date;
+};
+
+export function slugify(value: string): string {
+  return value
+    .normalize("NFKD")
+    .replace(/\p{M}/gu, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 48);
+}

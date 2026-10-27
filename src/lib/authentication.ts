@@ -12,3 +12,12 @@ export async function redirectIfSign() {
   const session = await getSession();
   if (session?.user) redirect("/dashboard");
 }
+
+export async function requireSession(redirectTo: string) {
+  const session = await getSession();
+  if (!session?.user) {
+    const next = redirectTo ? `?next=${redirectTo}` : "";
+    redirect("/sign-in" + next);
+  }
+  return session;
+}
