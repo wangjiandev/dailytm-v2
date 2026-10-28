@@ -127,7 +127,7 @@ export async function create(ctx: OrgContext, input: CreateProjectInput) {
           ? { members: { create: { memberId: ctx.member.id } } }
           : {}),
 
-        workflowStatuses: {
+        workflowStatus: {
           create: DEFAULT_WORKFLOW_STATUSES.map((status) => ({
             organizationId: ctx.orgId,
             name: status.name,

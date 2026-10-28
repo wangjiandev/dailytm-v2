@@ -17,6 +17,7 @@
   "dependencies": {
     "@base-ui/react": "^1.9.0",
     "@better-auth/prisma-adapter": "^1.7.12",
+    "@hello-pangea/dnd": "^18.0.1",
     "@hookform/resolvers": "^6.0.0",
     "@prisma/adapter-pg": "^7.10.1",
     "@prisma/client": "^7.10.1",
@@ -66,5 +67,5 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "packageManager": "pnpm@12.4.2"
+  "packageManager": "pnpm@12.15.0"
 }
